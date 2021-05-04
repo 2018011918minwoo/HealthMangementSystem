@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Health {
 
-	protected ExerciseKind kind= ExerciseKind.anaerobicexercise; 
+	protected ExerciseKind kind= ExerciseKind.weightexercise; 
 	protected String part;
 	protected String exercise;
 	protected String set;
@@ -12,6 +12,9 @@ public class Health {
 	
 	public Health() {
 		
+	}
+	public Health(ExerciseKind kind) {
+		this.kind =kind;
 	}
 	public Health(String part ) {
 		this.part = part;
@@ -52,9 +55,21 @@ public class Health {
 	public void setWeight(String weight) {
 		this.weight = weight;
 	}
-	
+	String ekind = "none";
 	public void HealthInfo() {
-		System.out.println("Part: "+ this.part + ", Excericse: " + this.exercise + ", Set*Reps: "+ this.set +", Weight: "+ this.weight);
+		switch(this.kind) {
+		case weightexercise:
+			ekind = "Weightexercise, ";
+			break;
+		case aerobicexercise:
+			ekind = "Aerobicexercise, ";
+			break;
+		case outsideworkout:
+			ekind = "OutsideWorkout, ";
+			break;
+		default:
+		}
+		System.out.println("Kind: "+ekind+"Part: "+ this.part + ", Excericse: " + this.exercise + ", Set*Reps: "+ this.set +", Weight: "+ this.weight);
 	}
 	
 	public void getUserInput(Scanner input) {

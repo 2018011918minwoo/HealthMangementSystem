@@ -1,6 +1,7 @@
 package Health;
 
 public enum ExerciseKind {
-	anaerobicexercise,
+	weightexercise,
 	aerobicexercise,
+	outsideworkout,
 }
