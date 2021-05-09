@@ -2,7 +2,7 @@ package Health;
 
 import java.util.Scanner;
 
-public class Health {
+public abstract class Health {
 
 	protected ExerciseKind kind= ExerciseKind.weightexercise; 
 	protected String part;
@@ -55,23 +55,7 @@ public class Health {
 	public void setWeight(String weight) {
 		this.weight = weight;
 	}
-	String ekind = "none";
-	public void HealthInfo() {
-		switch(this.kind) {
-		case weightexercise:
-			ekind = "Weightexercise, ";
-			break;
-		case aerobicexercise:
-			ekind = "Aerobicexercise, ";
-			break;
-		case outsideworkout:
-			ekind = "OutsideWorkout, ";
-			break;
-		default:
-		}
-		System.out.println("Kind: "+ekind+"Part: "+ this.part + ", Excericse: " + this.exercise + ", Set*Reps: "+ this.set +", Weight: "+ this.weight);
-	}
-	
+
 	public void getUserInput(Scanner input) {
 		System.out.print("Exercise Part: ");
 		String part = input.next();

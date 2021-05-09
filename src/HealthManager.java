@@ -3,19 +3,22 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import Health.AerobicExercise;
+import Health.ExerciseInput;
 import Health.ExerciseKind;
 import Health.Health;
 import Health.Outsideworkout;
+import Health.WeightExercise;
 
 public class HealthManager {
-	ArrayList<Health> healths = new ArrayList<Health>();
+	ArrayList<ExerciseInput> healths = new ArrayList<ExerciseInput>();
 	Scanner input;
 	HealthManager(Scanner input){
 		this.input = input;
 	}
 	public void addexercise() {
 		int kind=0;
-		Health health;
+		ExerciseInput exerciseinput;
+
 		while (kind != 1 && kind !=2 && kind !=3) {
 			System.out.println("1 for Weight Exercise");
 			System.out.println("2 for Aerobic Exercise");
@@ -23,21 +26,21 @@ public class HealthManager {
 			System.out.println("Select Exercise Kind between 1, 2 and 3:");
 			kind = input.nextInt();
 			if(kind == 1) {
-				health = new Health(ExerciseKind.weightexercise);
-				health.getUserInput(input);
-				healths.add(health);
+				exerciseinput = new WeightExercise(ExerciseKind.weightexercise);
+				exerciseinput.getUserInput(input);
+				healths.add(exerciseinput);
 				break;
 			}
 			else if(kind == 2) {
-				health = new AerobicExercise(ExerciseKind.aerobicexercise);
-				health.getUserInput(input);
-				healths.add(health);
+				exerciseinput = new AerobicExercise(ExerciseKind.aerobicexercise);
+				exerciseinput.getUserInput(input);
+				healths.add(exerciseinput);
 				break;
 			}
 			else if(kind == 3) {
-				health = new Outsideworkout(ExerciseKind.outsideworkout);
-				health.getUserInput(input);
-				healths.add(health);
+				exerciseinput = new Outsideworkout(ExerciseKind.outsideworkout);
+				exerciseinput.getUserInput(input);
+				healths.add(exerciseinput);
 				break;
 			}
 			else {
@@ -47,7 +50,7 @@ public class HealthManager {
 	}
 
 	public void deleteexercise() {
-		System.out.print("Exercise: ");
+		System.out.print("Exercise(Where): ");
 		String exercise = input.next();
 		int index = -1;
 		for(int i=0; i<healths.size();i++) {
@@ -80,7 +83,7 @@ public class HealthManager {
 		}
 
 		for(int i=0; i<healths.size();i++) {
-			Health health = healths.get(i);
+			ExerciseInput exerciseinput = healths.get(i);
 			if(index==i) {
 				int num = -1;
 				while (num !=5) {
@@ -95,22 +98,22 @@ public class HealthManager {
 					if (num ==1) {
 						System.out.print("Part(Kind):");
 						String part1 = input.next();
-						health.setPart(part);
+						exerciseinput.setPart(part);
 					}
 					else if (num ==2) {
 						System.out.print("Exercise(Where):");
 						String exercise1 = input.next();
-						health.setExercise(exercise);
+						exerciseinput.setExercise(exercise);
 					}
 					else if (num ==3) {
 						System.out.print("Set*Reps(Distance/Date):");
 						String set = input.next();
-						health.setSet(set);
+						exerciseinput.setSet(set);
 					}
 					else if (num ==4) {
 						System.out.print("Weight(Speed/Time):");
 						String weight = input.next();
-						health.setWeight(weight);
+						exerciseinput.setWeight(weight);
 					}
 					else {
 						continue;
