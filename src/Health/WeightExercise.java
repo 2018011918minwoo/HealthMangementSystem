@@ -9,18 +9,64 @@ public class WeightExercise extends Health implements ExerciseInput{
 	}
 	
 	public void getUserInput(Scanner input) {
-		System.out.print("Workout Kind: ");
+		System.out.print("Exercise Part: ");
 		String part = input.next();
 		this.setPart(part);
-		System.out.print("Where: ");
-		String exercise = input.next();
-		this.setExercise(exercise);
-		System.out.print("Date:");
-		String set = input.next();
-		this.setSet(set);
-		System.out.print("Time(x~y):");
-		String weight = input.next();
-		this.setWeight(weight);
+		if(part.equals("back")) {
+			System.out.print("Exericse: ");
+			String exercise = input.next();
+			this.setExercise(exercise);
+			System.out.print("Set*Reps: ");
+			String set = input.next();
+			this.setSet(set);
+			System.out.print("Weight: ");
+			String weight = input.next();
+			this.setWeight(weight);
+		}
+		else if(part.equals("chest")) {
+			System.out.print("Exericse: ");
+			String exercise = input.next();
+			this.setExercise(exercise);
+			System.out.print("Set*Reps: ");
+			String set = input.next();
+			this.setSet(set);
+			System.out.print("Weight: ");
+			String weight = input.next();
+			this.setWeight(weight);
+		}
+		else if(part.equals("legs")) {
+			System.out.print("Exericse: ");
+			String exercise = input.next();
+			this.setExercise(exercise);
+			System.out.print("Set*Reps: ");
+			String set = input.next();
+			this.setSet(set);
+			System.out.print("Weight: ");
+			String weight = input.next();
+			this.setWeight(weight);
+		}
+		else if(part.equals("arms)")) {
+			System.out.print("Exericse: ");
+			String exercise = input.next();
+			this.setExercise(exercise);
+			System.out.print("Set*Reps: ");
+			String set = input.next();
+			this.setSet(set);
+			System.out.print("Weight: ");
+			String weight = input.next();
+			this.setWeight(weight);
+		}
+		else if(part.equals("shoulders")) {
+			System.out.print("Exericse: ");
+			String exercise = input.next();
+			this.setExercise(exercise);
+			System.out.print("Set*Reps: ");
+			String set = input.next();
+			this.setSet(set);
+			System.out.print("Weight: ");
+			String weight = input.next();
+			this.setWeight(weight);
+		}
 	}
 	
 	String ekind = "none";

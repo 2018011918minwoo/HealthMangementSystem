@@ -55,65 +55,6 @@ public abstract class Health {
 	public void setWeight(String weight) {
 		this.weight = weight;
 	}
+	public abstract void getUserInput(Scanner input);
 
-	public void getUserInput(Scanner input) {
-		System.out.print("Exercise Part: ");
-		String part = input.next();
-		this.setPart(part);
-		if(part.equals("back")) {
-			System.out.print("Exericse: ");
-			String exercise = input.next();
-			this.setExercise(exercise);
-			System.out.print("Set*Reps: ");
-			String set = input.next();
-			this.setSet(set);
-			System.out.print("Weight: ");
-			String weight = input.next();
-			this.setWeight(weight);
-		}
-		else if(part.equals("chest")) {
-			System.out.print("Exericse: ");
-			String exercise = input.next();
-			this.setExercise(exercise);
-			System.out.print("Set*Reps: ");
-			String set = input.next();
-			this.setSet(set);
-			System.out.print("Weight: ");
-			String weight = input.next();
-			this.setWeight(weight);
-		}
-		else if(part.equals("legs")) {
-			System.out.print("Exericse: ");
-			String exercise = input.next();
-			this.setExercise(exercise);
-			System.out.print("Set*Reps: ");
-			String set = input.next();
-			this.setSet(set);
-			System.out.print("Weight: ");
-			String weight = input.next();
-			this.setWeight(weight);
-		}
-		else if(part.equals("arms)")) {
-			System.out.print("Exericse: ");
-			String exercise = input.next();
-			this.setExercise(exercise);
-			System.out.print("Set*Reps: ");
-			String set = input.next();
-			this.setSet(set);
-			System.out.print("Weight: ");
-			String weight = input.next();
-			this.setWeight(weight);
-		}
-		else if(part.equals("shoulders")) {
-			System.out.print("Exericse: ");
-			String exercise = input.next();
-			this.setExercise(exercise);
-			System.out.print("Set*Reps: ");
-			String set = input.next();
-			this.setSet(set);
-			System.out.print("Weight: ");
-			String weight = input.next();
-			this.setWeight(weight);
-		}
-	}
 }
