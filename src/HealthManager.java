@@ -1,5 +1,6 @@
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import Health.AerobicExercise;
@@ -20,31 +21,37 @@ public class HealthManager {
 		ExerciseInput exerciseinput;
 
 		while (kind != 1 && kind !=2 && kind !=3) {
-			System.out.println("1 for Weight Exercise");
-			System.out.println("2 for Aerobic Exercise");
-			System.out.println("3 for Ouside Workout");
-			System.out.println("Select Exercise Kind between 1, 2 and 3:");
-			kind = input.nextInt();
-			if(kind == 1) {
-				exerciseinput = new WeightExercise(ExerciseKind.weightexercise);
-				exerciseinput.getUserInput(input);
-				healths.add(exerciseinput);
-				break;
+			try {
+				System.out.println("1 for Weight Exercise");
+				System.out.println("2 for Aerobic Exercise");
+				System.out.println("3 for Ouside Workout");
+				System.out.println("Select Exercise Kind between 1, 2 and 3:");
+				kind = input.nextInt();
+				if(kind == 1) {
+					exerciseinput = new WeightExercise(ExerciseKind.weightexercise);
+					exerciseinput.getUserInput(input);
+					healths.add(exerciseinput);
+					break;
+				}
+				else if(kind == 2) {
+					exerciseinput = new AerobicExercise(ExerciseKind.aerobicexercise);
+					exerciseinput.getUserInput(input);
+					healths.add(exerciseinput);
+					break;
+				}
+				else if(kind == 3) {
+					exerciseinput = new Outsideworkout(ExerciseKind.outsideworkout);
+					exerciseinput.getUserInput(input);
+					healths.add(exerciseinput);
+					break;
+				}
 			}
-			else if(kind == 2) {
-				exerciseinput = new AerobicExercise(ExerciseKind.aerobicexercise);
-				exerciseinput.getUserInput(input);
-				healths.add(exerciseinput);
-				break;
-			}
-			else if(kind == 3) {
-				exerciseinput = new Outsideworkout(ExerciseKind.outsideworkout);
-				exerciseinput.getUserInput(input);
-				healths.add(exerciseinput);
-				break;
-			}
-			else {
-				System.out.print("Select Exercise Kind between 1 and 2:");
+			catch(InputMismatchException e) {
+				System.out.println("Please put an integer between 1 and 3");
+				if (input.hasNext()) {
+					input.next();
+				}
+				kind = -1;
 			}
 		}
 	}
@@ -52,6 +59,10 @@ public class HealthManager {
 	public void deleteexercise() {
 		System.out.print("Exercise(Where): ");
 		String exercise = input.next();
+		int index = findIndex(exercise);
+		removefromExercise(index, exercise);
+	}
+	public int findIndex(String exercise) {
 		int index = -1;
 		for(int i=0; i<healths.size();i++) {
 			if(healths.get(i).getExercise().equals(exercise)){
@@ -59,6 +70,10 @@ public class HealthManager {
 				break;
 			}
 		}
+		return index;
+	}
+
+	public void removefromExercise(int index, String exercise ) {
 		if(index>=0){
 			healths.remove(index);
 			System.out.println("Exercise"+exercise+" is deleted");
@@ -87,37 +102,25 @@ public class HealthManager {
 			if(index==i) {
 				int num = -1;
 				while (num !=5) {
-					System.out.println("1. Edit Part(Kind)");
-					System.out.println("2. Edit Exercise(Where)");
-					System.out.println("3. Edit Set*Reps(Distance/Date)");
-					System.out.println("4. Edit weight(Speed/Time)");
-					System.out.println("5. Exit");
-					System.out.println("Select one number 1-5:");
+					showEditMenu();
 					num = input.nextInt();
 
-					if (num ==1) {
-						System.out.print("Part(Kind):");
-						String part1 = input.next();
-						exerciseinput.setPart(part);
-					}
-					else if (num ==2) {
-						System.out.print("Exercise(Where):");
-						String exercise1 = input.next();
-						exerciseinput.setExercise(exercise);
-					}
-					else if (num ==3) {
-						System.out.print("Set*Reps(Distance/Date):");
-						String set = input.next();
-						exerciseinput.setSet(set);
-					}
-					else if (num ==4) {
-						System.out.print("Weight(Speed/Time):");
-						String weight = input.next();
-						exerciseinput.setWeight(weight);
-					}
-					else {
+					switch(num) {
+					case 1:
+						exerciseinput.setExercisePart(input);
+						break;
+					case 2:
+						exerciseinput.setExercise(input);
+						break;
+					case 3:
+						exerciseinput.setSet(input);
+						break;
+					case 4:
+						exerciseinput.setWeight(input);
+						break;
+					default:
 						continue;
-					}//if
+					}//switch
 				}//while
 				break;
 			}//if
@@ -127,6 +130,15 @@ public class HealthManager {
 		for(int i=0; i<healths.size();i++) {
 			healths.get(i).HealthInfo();
 		}
+	}
+
+	public void showEditMenu() {
+		System.out.println("1. Edit Part(Kind)");
+		System.out.println("2. Edit Exercise(Where)");
+		System.out.println("3. Edit Set*Reps(Distance/Date)");
+		System.out.println("4. Edit weight(Speed/Time)");
+		System.out.println("5. Exit");
+		System.out.println("Select one number 1-5:");
 	}
 }
 

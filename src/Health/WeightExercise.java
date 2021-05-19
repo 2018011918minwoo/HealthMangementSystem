@@ -2,75 +2,51 @@ package Health;
 
 import java.util.Scanner;
 
-public class WeightExercise extends Health implements ExerciseInput{
+import exception.SetException;
+
+public class WeightExercise extends Health {
 
 	public WeightExercise(ExerciseKind kind) {
 		this.kind =kind;
 	}
 	
+	
 	public void getUserInput(Scanner input) {
-		System.out.print("Exercise Part: ");
-		String part = input.next();
-		this.setPart(part);
+		setExercisePart(input);
+		
 		if(part.equals("back")) {
-			System.out.print("Exericse: ");
-			String exercise = input.next();
-			this.setExercise(exercise);
-			System.out.print("Set*Reps: ");
-			String set = input.next();
-			this.setSet(set);
-			System.out.print("Weight: ");
-			String weight = input.next();
-			this.setWeight(weight);
+			setExercise(input);
+			setSet(input);
+			setWeight(input);
 		}
 		else if(part.equals("chest")) {
-			System.out.print("Exericse: ");
-			String exercise = input.next();
-			this.setExercise(exercise);
-			System.out.print("Set*Reps: ");
-			String set = input.next();
-			this.setSet(set);
-			System.out.print("Weight: ");
-			String weight = input.next();
-			this.setWeight(weight);
+			setExercise(input);
+			setSet(input);
+			setWeight(input);
 		}
 		else if(part.equals("legs")) {
-			System.out.print("Exericse: ");
-			String exercise = input.next();
-			this.setExercise(exercise);
-			System.out.print("Set*Reps: ");
-			String set = input.next();
-			this.setSet(set);
-			System.out.print("Weight: ");
-			String weight = input.next();
-			this.setWeight(weight);
+			setExercise(input);
+			setSet(input);
+			setWeight(input);
 		}
 		else if(part.equals("arms)")) {
-			System.out.print("Exericse: ");
-			String exercise = input.next();
-			this.setExercise(exercise);
-			System.out.print("Set*Reps: ");
-			String set = input.next();
-			this.setSet(set);
-			System.out.print("Weight: ");
-			String weight = input.next();
-			this.setWeight(weight);
+			setExercise(input);
+			setSet(input);
+			setWeight(input);
 		}
 		else if(part.equals("shoulders")) {
-			System.out.print("Exericse: ");
-			String exercise = input.next();
-			this.setExercise(exercise);
-			System.out.print("Set*Reps: ");
-			String set = input.next();
-			this.setSet(set);
-			System.out.print("Weight: ");
-			String weight = input.next();
-			this.setWeight(weight);
+			setExercise(input);
+			setSet(input);
+			setWeight(input);
 		}
 	}
 	
-	String ekind = "none";
 	public void HealthInfo() {
+		String ekind = getKindString();
+		System.out.println("Kind: "+ekind+"Part: "+ this.part + ", Excericse: " + this.exercise + ", Set*Reps: "+ this.set +", Weight: "+ this.weight);
+	}
+	public String getKindString() {
+		String ekind = "none";
 		switch(this.kind) {
 		case weightexercise:
 			ekind = "Weightexercise, ";
@@ -83,6 +59,8 @@ public class WeightExercise extends Health implements ExerciseInput{
 			break;
 		default:
 		}
-		System.out.println("Kind: "+ekind+"Part: "+ this.part + ", Excericse: " + this.exercise + ", Set*Reps: "+ this.set +", Weight: "+ this.weight);
+		return ekind;
 	}
+	
+ 
 }

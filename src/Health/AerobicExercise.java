@@ -2,27 +2,24 @@ package Health;
 
 import java.util.Scanner;
 
-public class AerobicExercise extends Health implements ExerciseInput {
+public class AerobicExercise extends Health {
 	public AerobicExercise(ExerciseKind kind) {
 		this.kind =kind;
 	}
+
 	public void getUserInput(Scanner input) {
-		System.out.print("Aerobic Kind: ");
-		String part = input.next();
-		this.setPart(part);
-		System.out.print("Exercise: ");
-		String exercise = input.next();
-		this.setExercise(exercise);
-		System.out.print("Distance:");
-		String set = input.next();
-		this.setSet(set);
-		System.out.print("Speed:");
-		String weight = input.next();
-		this.setWeight(weight);
+		setExercisePart(input);
+		setExercise(input);
+		setSet(input);
+		setWeight(input);
 	}
-	
-	String ekind = "none";
+
 	public void HealthInfo() {
+		String ekind = getKindString();
+		System.out.println("Kind: "+ekind+ ", Excericse: " + this.exercise + ", Distance: "+ this.set +", Speed: "+ this.weight);
+	}
+	public String getKindString() {
+		String ekind = "none";
 		switch(this.kind) {
 		case weightexercise:
 			ekind = "Weightexercise, ";
@@ -35,6 +32,6 @@ public class AerobicExercise extends Health implements ExerciseInput {
 			break;
 		default:
 		}
-		System.out.println("Kind: "+ekind+ ", Excericse: " + this.exercise + ", Distance: "+ this.set +", Speed: "+ this.weight);
+		return ekind;
 	}
 }

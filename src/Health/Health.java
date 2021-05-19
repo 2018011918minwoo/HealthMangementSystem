@@ -2,7 +2,9 @@ package Health;
 
 import java.util.Scanner;
 
-public abstract class Health {
+import exception.SetException;
+
+public abstract class Health implements ExerciseInput {
 
 	protected ExerciseKind kind= ExerciseKind.weightexercise; 
 	protected String part;
@@ -46,9 +48,14 @@ public abstract class Health {
 	public String getSet() {
 		return set;
 	}
-	public void setSet(String set) {
+	public void setSet(String set) throws SetException{
+	
+		if(this.kind==ExerciseKind.weightexercise &&!set.contains("*") || set.equals("")) {
+			throw new SetException();
+		}
 		this.set = set;
 	}
+	
 	public String getWeight() {
 		return weight;
 	}
@@ -56,5 +63,85 @@ public abstract class Health {
 		this.weight = weight;
 	}
 	public abstract void getUserInput(Scanner input);
+	
+	public void setExercisePart(Scanner input) {
+		switch(this.kind) {
+		case weightexercise:
+			System.out.print("Exercise Part: ");
+			break;
+		case aerobicexercise:
+			System.out.print("Aerobic Kind: ");
+			break;
+		case outsideworkout:
+			System.out.print("Workout Kind: ");
+			break;
+		default:
+		}
+		String part1 = input.next();
+		this.setPart(part1);
+	}
+	public void setExercise(Scanner input) {
+		switch(this.kind) {
+		case weightexercise:
+			System.out.print("Exericse: ");
+			break;
+		case aerobicexercise:
+			System.out.print("Exercise: ");
+			break;
+		case outsideworkout:
+			System.out.print("Where: ");
+			break;
+		default:
+		}
+		String exercise1 = input.next();
+		this.setExercise(exercise1);
+	}
+	public void setSet (Scanner input){
+		switch(this.kind) {
+		case weightexercise:
+			System.out.print("Set*Reps: ");
+			break;
+		case aerobicexercise:
+			System.out.print("Distance:");
+			break;
+		case outsideworkout:
+			System.out.print("Date:");
+			break;
+		default:
+		}
+		String set = "";
+		if(this.kind==ExerciseKind.weightexercise && !set.contains("*")) {
+			while(!set.contains("*")) {
+				set = input.next();
+				try {
+					this.setSet(set);
+				}
+				catch(SetException e) {
+					System.out.println("Incorrect Set*Reps Format. Contain *");
+					System.out.print("Set*Reps: ");
+				}
+			}
+		}
+		else if(this.kind !=ExerciseKind.weightexercise){
+			set = input.next();
+			this.set=set;
+		}
+	}
+	public void setWeight( Scanner input) {
+		switch(this.kind) {
+		case weightexercise:
+			System.out.print("Weight: ");
+			break;
+		case aerobicexercise:
+			System.out.print("Speed:");
+			break;
+		case outsideworkout:
+			System.out.print("Time(x~y):");
+			break;
+		default:
+		}
+		String weight = input.next();
+		this.setWeight(weight);
+	}
 
 }
