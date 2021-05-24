@@ -1,11 +1,16 @@
 package Health;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 import exception.SetException;
 
-public abstract class Health implements ExerciseInput {
+public abstract class Health implements ExerciseInput, Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6574452929117569042L;
 	protected ExerciseKind kind= ExerciseKind.weightexercise; 
 	protected String part;
 	protected String exercise;
