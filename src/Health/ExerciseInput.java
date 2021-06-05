@@ -10,6 +10,10 @@ public interface ExerciseInput {
 	
 	public String getExercise();
 	
+	public String getSet();
+	
+	public String getWeight();
+	
 	public void setPart(String part);
 	
 	public void setExercise(String exercise);
@@ -29,4 +33,5 @@ public interface ExerciseInput {
 	public void setSet (Scanner input);
 	
 	public void setWeight(Scanner input);
+	
 }
