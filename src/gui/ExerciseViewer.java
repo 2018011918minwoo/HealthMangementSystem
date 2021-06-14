@@ -15,6 +15,14 @@ import Manager.HealthManager;
 public class ExerciseViewer extends JPanel{
 	
 	HealthManager healthmanager;
+	public HealthManager getHealthmanager() {
+		return healthmanager;
+	}
+
+	public void setHealthmanager(HealthManager healthmanager) {
+		this.healthmanager = healthmanager;
+	}
+
 	WindowFrame frame;
 
 	public ExerciseViewer(WindowFrame frame, HealthManager healthmanager) {
@@ -25,10 +33,10 @@ public class ExerciseViewer extends JPanel{
 		
 		DefaultTableModel m = new DefaultTableModel();
 		
-		m.addColumn("Part");
-		m.addColumn("Exercise");
-		m.addColumn("Set*Reps");
-		m.addColumn("Weight");
+		m.addColumn("Part/Kind");
+		m.addColumn("Exercise/Where");
+		m.addColumn("Set*Reps/Distance/Date");
+		m.addColumn("Weight/Speed/Time");
 
 		for(int i=0; i<healthmanager.size();i++)		{
 			Vector row = new Vector();

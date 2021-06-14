@@ -96,7 +96,7 @@ public class MenuMaganger {
 		
 		return healthmanager;
 	}
-	public static HealthManager putObject(HealthManager healthmanager, String filename) {
+	public static void putObject(HealthManager healthmanager, String filename) {
 
 		try {
 			FileOutputStream file = new FileOutputStream(filename);
@@ -113,7 +113,5 @@ public class MenuMaganger {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		return healthmanager;
 	}
 }

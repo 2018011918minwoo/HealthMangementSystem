@@ -27,6 +27,16 @@ public class HealthManager implements Serializable{
 	HealthManager(Scanner input){
 		this.input = input;
 	}
+	
+	public void addexercise(String part, String exercise, String set, String weight) {
+		ExerciseInput exerciseinput = new WeightExercise(ExerciseKind.weightexercise);
+		exerciseinput.getUserInput(input);
+		healths.add(exerciseinput);
+	}
+	public void addexercise(ExerciseInput exerciseinput) {
+		healths.add(exerciseinput);
+	}
+	
 	public void addexercise() {
 		int kind=0;
 		ExerciseInput exerciseinput;

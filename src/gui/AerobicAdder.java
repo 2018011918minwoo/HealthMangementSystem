@@ -1,7 +1,6 @@
 package gui;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -11,19 +10,19 @@ import Listener.AdderCancelListener;
 import Listener.ExerciseAdderListener;
 import Manager.HealthManager;
 
-public class ExerciseAdder extends JPanel{
+public class AerobicAdder extends JPanel {
 	WindowFrame frame;
 	SelectExercise select;
 	HealthManager healthmanager;
 	
-	public ExerciseAdder(WindowFrame frame, HealthManager healthmanager) {
+	public AerobicAdder(WindowFrame frame, HealthManager healthmanager) {
 		this.frame = frame;
 		this.healthmanager = healthmanager;
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(new SpringLayout());
 		
-		JLabel lpart = new JLabel("Part: ", JLabel.TRAILING);
+		JLabel lpart = new JLabel("Aerobic kind: ", JLabel.TRAILING);
 		JTextField fpart = new JTextField(10);
 		lpart.setLabelFor(fpart);
 		panel.add(lpart);
@@ -35,13 +34,13 @@ public class ExerciseAdder extends JPanel{
 		panel.add(lexercise);
 		panel.add(fexercise);
 		
-		JLabel lset = new JLabel("Set*Reps: ", JLabel.TRAILING);
+		JLabel lset = new JLabel("Distance: ", JLabel.TRAILING);
 		JTextField fset = new JTextField(10);
 		lset.setLabelFor(fset);
 		panel.add(lset);
 		panel.add(fset);
 		
-		JLabel lweight = new JLabel("Weight: ", JLabel.TRAILING);
+		JLabel lweight = new JLabel("Speed: ", JLabel.TRAILING);
 		JTextField fweight = new JTextField(10);
 		lset.setLabelFor(fweight);
 		panel.add(lweight);
@@ -62,3 +61,5 @@ public class ExerciseAdder extends JPanel{
 		this.setVisible(true);
 	}
 }
+
+

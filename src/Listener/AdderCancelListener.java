@@ -1,26 +1,21 @@
 package Listener;
-import java.awt.Frame;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-
-import gui.ExerciseAdder;
-import gui.ExerciseViewer;
 import gui.WindowFrame;
 
-public class ButtonAddListener implements ActionListener {
+public class AdderCancelListener implements ActionListener {
 	
 	WindowFrame frame;
- 
-	public ButtonAddListener(WindowFrame frame) {
+	
+	public AdderCancelListener(WindowFrame frame) {
 		this.frame = frame;
 	}
 
-	@Override
 	public void actionPerformed(ActionEvent e) {
 		frame.getContentPane().removeAll();
-		frame.getContentPane().add(frame.getE());
+		frame.getContentPane().add(frame.getM());
 		frame.revalidate();
 		frame.repaint();
 	}
